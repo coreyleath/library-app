@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#shelves {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 50%;
+    border: solid rgb(70, 47, 16) 20px;
+    background-color: rgb(131, 90, 63);
+}
+
+.book {
+    width: 200px;
+    height: 300px;
+    margin: 20px 0  0;
+    border: solid black 4px;
+    background-color: white;
+}
+
+.shelf {
+    width: 100%;
+    border: solid rgb(70, 47, 16) 8px;
+}
