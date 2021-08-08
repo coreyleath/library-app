@@ -1,4 +1,4 @@
-let myLibrary = [new Book('The Hobbit', 'Tolkien??', 2104, true), new Book('Life of Pi', 'Me', 1337, false)]
+let myLibrary = [new Book('The Hobbit', 'J. R. R. Tolkien', 310, true), new Book('Life of Pi', 'Yann Martel', 336, false)]
 
 
 function Book(title, author, pages, read) {
@@ -8,18 +8,27 @@ function Book(title, author, pages, read) {
     this.read = read
 }
 
+
 Book.prototype.giveInfo = function () {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'has been read' : 'not read yet'}.`
+  return `${this.title} by ${this.author}, ${this.pages} pages.`
 }
 
-addButton.addEventListener('click', function() {
 
+addButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  let title = document.getElementById('title').value;
+  let author = document.getElementById('author').value;
+  let pages = document.getElementById('pages').value;
+  let read = document.getElementById('readT').checked;
+  addBookToLibrary(title, author, pages, read);
 });
 
+
 function addBookToLibrary(title, author, pages, read) {
-  myLibrary.push(Book(title, author, pages, read));
+  myLibrary.push(new Book(title, author, pages, read));
   updateLibrary();
 }
+
 
 function removeBookFromLibrary(i) {
   myLibrary.splice(i,1);
@@ -32,6 +41,7 @@ function removeAllChildNodes(parent) {
       parent.removeChild(parent.firstChild);
   }
 }
+
 
 function updateLibrary() {
 
@@ -49,10 +59,20 @@ function updateLibrary() {
     bookDiv.classList.add('book');
     bookDiv.textContent = myLibrary[i].giveInfo();
 
+    let thisBook = i;
+
+    const readButton = document.createElement('button');
+    readButton.classList.add('readButton');
+    readButton.textContent = myLibrary[i].read ? 'Read' : 'Not read';
+    readButton.addEventListener('click', function() {
+      myLibrary[thisBook].read = !myLibrary[thisBook].read;
+      updateLibrary();
+    });
+    bookDiv.appendChild(readButton);
+
     const removeButton = document.createElement('button');
     removeButton.classList.add('removeButton');
     removeButton.textContent = 'Remove book';
-    let thisBook = i;
     removeButton.addEventListener('click', function() {
       removeBookFromLibrary(thisBook);
     });

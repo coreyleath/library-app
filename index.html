@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html lang='en'>
+    
 <head>
     <meta charset='UTF-8'>
-    <title>My Library</title>
+    <title>My Bookshelf</title>
     <link rel='stylesheet' href='style.css'>
     <script src='script.js' defer></script>
 </head>
 
 <body>
-    <button id='addButton'>Add book</button>
-    <div id="shelves">
+    <div id='inputColumn'>
+        Add your own books!<br><br><br>
+        <form>
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" value="Anna Karenina"><br><br>
+            <label for="author">Author:</label><br>
+            <input type="text" id="author" name="author" value="Leo Tolstoy"><br><br>
+            <label for="pages"># of pages:</label><br>
+            <input type="text" id="pages" name="pages" value="864"><br><br>
+            <label for="read">Read?:</label><br>
+            <input type="radio" id="readT" name="readT" value="yes" checked>
+            <label for="read">Yes</label>
+            <input type="radio" id="readF" name="readF" value="no">
+            <label for="read">No</label><br><br>
+            <input type="submit" id='addButton' value="Add book">
+        </form>
+    </div>
+    <div id='shelves'>
         <div class="book"></div>
         <div class="book"></div>
         <div class="book"></div>
@@ -20,14 +37,6 @@
         <div class="book"></div>
         <div class="book"></div>
         <div class="shelf"></div>
-        <div class="book"></div>
-        <div class="book"></div>
-        <div class="book"></div>
-        <div class="book"></div>
-        <div class="shelf"></div>
-        <div class="book"></div>
-        <div class="book"></div>
-        <div class="book"></div>
     </div>
 </body>
 
